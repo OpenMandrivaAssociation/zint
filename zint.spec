@@ -60,7 +60,7 @@ Features of the library:
 
 %package -n %{devname}
 Summary:	Library and header files for %{name}
-Group:		Development/Libraries
+Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
@@ -72,7 +72,7 @@ http://www.zint.org.uk/zintSite/Manual.aspx
 
 %package qt
 Summary:	Zint Barcode Studio
-Group:		Applications/Text
+Group:		Graphics
 
 %description qt
 Zint Barcode Studio is a Qt-based GUI which allows desktop users to generate 
@@ -87,7 +87,7 @@ libQZint shared libraries.
 
 %package -n %{qdevname}
 Summary:	Library and header files for %{name}-qt
-Group:		Development/Libraries
+Group:		Development/C
 Requires:	%{qlibname} = %{version}-%{release}
 Provides:	q%{name}-devel = %{version}-%{release}
 Provides:	libq%{name}-devel = %{version}-%{release}
