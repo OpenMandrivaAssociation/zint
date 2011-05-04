@@ -1,5 +1,5 @@
 %define name	zint
-%define version 2.4.1
+%define version 2.4.2
 %define rel	1
 
 %define major	2.4
