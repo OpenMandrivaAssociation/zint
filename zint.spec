@@ -1,5 +1,5 @@
 %define name	zint
-%define version 2.4.2
+%define version 2.4.3
 %define rel	1
 
 %define major	2.4
@@ -127,7 +127,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc README
+%doc readme
 %{_bindir}/%{name}
 
 %files -n %{libname}
