@@ -153,3 +153,18 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_includedir}/qzint.h
 %{_libdir}/libQZint.so
+
+
+%changelog
+* Mon May 23 2011 Jani Välimaa <wally@mandriva.org> 2.4.3-1mdv2011.0
++ Revision: 677771
+- new version 2.4.3
+
+* Wed May 04 2011 Jani Välimaa <wally@mandriva.org> 2.4.2-1
++ Revision: 666930
+- new version 2.4.2
+
+* Thu Mar 17 2011 Jani Välimaa <wally@mandriva.org> 2.4.1-1
++ Revision: 646232
+- initial import based on Fedora .spec
+
