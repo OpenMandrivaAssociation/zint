@@ -1,4 +1,4 @@
-define major	2.6
+%define major	2.6
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname -d %{name}
 %define qlibname %mklibname q%{name} %{major}
