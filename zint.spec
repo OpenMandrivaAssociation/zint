@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(Qt5Help)
 BuildRequires:	pkgconfig(Qt5UiTools)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	desktop-file-utils
+BuildRequires:  qmake5
 
 %description
 Zint is a C library for encoding data in several barcode variants. The
