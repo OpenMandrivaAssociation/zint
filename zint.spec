@@ -1,39 +1,40 @@
-%define name	zint
-%define version 2.4.3
-%define rel	1
-
-%define major	2.4
+%define major	2.6
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname -d %{name}
-%define qlibname	%mklibname q%{name} %{major}
-%define qdevname	%mklibname -d q%{name}
+%define qlibname %mklibname q%{name} %{major}
+%define qdevname %mklibname -d q%{name}
 
-Name:		%{name}
-Version:	%{version}
-Release:	%mkrel %{rel}
+Name:		zint
+Version:	2.6.3
+Release:	1
 Summary:	Barcode generator
 License:	GPLv3+
-URL:		http://www.zint.org.uk
-Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Group:		Graphics
+Group:		Graphics/Scanning
+URL:		http://www.zint.org.uk/
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}_rc2.src.tar.gz
 
 # patch to disable creation of rpaths
 Patch0:		%{name}-rpath.patch
 
 BuildRequires:	cmake
-BuildRequires:	libpng-devel
-BuildRequires:	zlib-devel
-BuildRequires:	qt4-devel
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Help)
+BuildRequires:	pkgconfig(Qt5UiTools)
+BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	desktop-file-utils
+BuildRequires:  qmake5
 
 %description
 Zint is a C library for encoding data in several barcode variants. The
 bundled command-line utility provides a simple interface to the library.
 Features of the library:
 - Over 50 symbologies including all ISO/IEC standards, like QR codes.
-- Unicode translation for symbologies which support Latin-1 and 
+- Unicode translation for symbologies which support Latin-1 and
   Kanji character sets.
-- Full GS1 support including data verification and automated insertion of 
+- Full GS1 support including data verification and automated insertion of
   FNC1 characters.
 - Support for encoding binary data including NULL (ASCII 0) characters.
 - Health Industry Barcode (HIBC) encoding capabilities.
@@ -43,6 +44,7 @@ Features of the library:
 %package -n %{libname}
 Summary:	C library for encoding data in several barcode variants
 Group:		System/Libraries
+License:	BSD
 
 %description -n %{libname}
 Zint is a C library for encoding data in several barcode variants.
@@ -61,21 +63,22 @@ Features of the library:
 %package -n %{devname}
 Summary:	Library and header files for %{name}
 Group:		Development/C
+License:	BSD
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
 
 %description -n %{devname}
-C library and header files needed to develop applications that use 
+C library and header files needed to develop applications that use
 the Zint library. The API documentation can be found on the project website:
 http://www.zint.org.uk/zintSite/Manual.aspx
 
 %package qt
 Summary:	Zint Barcode Studio
-Group:		Graphics
+Group:		Graphics/Scanning
 
 %description qt
-Zint Barcode Studio is a Qt-based GUI which allows desktop users to generate 
+Zint Barcode Studio is a Qt-based GUI which allows desktop users to generate
 barcodes which can then be embedded in documents or HTML pages.
 
 %package -n %{qlibname}
@@ -96,7 +99,7 @@ Provides:	libq%{name}-devel = %{version}-%{release}
 C library and header files needed to develop applications that use libQZint.
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}_rc2.src
 %patch0 -p1
 
 # remove BSD-licensed file required for Windows only (just to ensure that this package is plain GPLv3+)
@@ -107,14 +110,13 @@ rm -f frontend/getopt*.*
 
 %build
 %cmake
-%make VERBOSE=1
+%make_build VERBOSE=1
 
 %install
-rm -rf %{buildroot}
-%makeinstall_std -C build
+%make_install -C build
 
 #we don't need this(?)
-rm -rf %{buildroot}%{_datadir}/cmake
+rm -rf %{buildroot}/%{_datadir}/apps
 
 #icon
 install -D -p -m 644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
@@ -122,49 +124,30 @@ install -D -p -m 644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 #.desktop file
 install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
 
-%clean
-rm -rf %{buildroot}
+# manpage
+install -D -p -m 644 frontend/%{name}.1* %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%defattr(-,root,root)
-%doc readme
+%doc docs/manual.txt README TODO
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1*
 
 %files -n %{libname}
-%defattr(-,root,root)
-%{_libdir}/libzint.so.%{major}*
+%license backend/LICENSE
+%{_libdir}/libzint.so.%{major}{,.*}
 
 %files -n %{devname}
-%defattr(-,root,root)
 %{_includedir}/%{name}.h
 %{_libdir}/libzint.so
 
 %files qt
-%defattr(-,root,root)
 %{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
 %{_datadir}/pixmaps/%{name}.png
 
 %files -n %{qlibname}
-%defattr(-,root,root)
-%{_libdir}/libQZint.so.%{major}*
+%{_libdir}/libQZint.so.%{major}{,.*}
 
 %files -n %{qdevname}
-%defattr(-,root,root)
 %{_includedir}/qzint.h
 %{_libdir}/libQZint.so
-
-
-%changelog
-* Mon May 23 2011 Jani Välimaa <wally@mandriva.org> 2.4.3-1mdv2011.0
-+ Revision: 677771
-- new version 2.4.3
-
-* Wed May 04 2011 Jani Välimaa <wally@mandriva.org> 2.4.2-1
-+ Revision: 666930
-- new version 2.4.2
-
-* Thu Mar 17 2011 Jani Välimaa <wally@mandriva.org> 2.4.1-1
-+ Revision: 646232
-- initial import based on Fedora .spec
-
