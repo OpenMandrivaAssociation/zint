@@ -99,7 +99,7 @@ Provides:	libq%{name}-devel = %{version}-%{release}
 C library and header files needed to develop applications that use libQZint.
 
 %prep
-%setup -qn %{name}-%{version}_rc2.src
+%setup -qn %{name}-%{version}
 %patch0 -p1
 
 # remove BSD-licensed file required for Windows only (just to ensure that this package is plain GPLv3+)
