@@ -5,13 +5,13 @@
 %define qdevname %mklibname -d q%{name}
 
 Name:		zint
-Version:	2.6.3
+Version:	2.6.7
 Release:	1
 Summary:	Barcode generator
 License:	GPLv3+
 Group:		Graphics/Scanning
 URL:		http://www.zint.org.uk/
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}_rc2.src.tar.gz
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 
 # patch to disable creation of rpaths
 Patch0:		%{name}-rpath.patch
@@ -99,7 +99,7 @@ Provides:	libq%{name}-devel = %{version}-%{release}
 C library and header files needed to develop applications that use libQZint.
 
 %prep
-%setup -qn %{name}-%{version}_rc2.src
+%setup -qn %{name}-%{version}
 %patch0 -p1
 
 # remove BSD-licensed file required for Windows only (just to ensure that this package is plain GPLv3+)
