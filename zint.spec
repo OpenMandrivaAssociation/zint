@@ -11,7 +11,7 @@ Summary:	Barcode generator
 License:	GPLv3+
 Group:		Graphics/Scanning
 URL:		http://www.zint.org.uk/
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.gz
 
 # patch to disable creation of rpaths
 Patch0:		%{name}-rpath.patch
@@ -99,7 +99,7 @@ Provides:	libq%{name}-devel = %{version}-%{release}
 C library and header files needed to develop applications that use libQZint.
 
 %prep
-%setup -qn %{name}-%{version}
+%setup -qn %{name}-src-%{version}
 %patch0 -p1
 
 # remove BSD-licensed file required for Windows only (just to ensure that this package is plain GPLv3+)
