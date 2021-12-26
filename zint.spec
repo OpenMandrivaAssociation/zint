@@ -146,7 +146,7 @@ install -D -p -m 644 frontend/%{name}.1* %{buildroot}%{_mandir}/man1/%{name}.1
 #{_datadir}/pixmaps/%{name}.png
 
 %files -n %{qlibname}
-#{_libdir}/libQZint.so.%{major}{,.*}
+%{_libdir}/libQZint.*
 
 %files -n %{qdevname}
 %{_includedir}/qzint.h
