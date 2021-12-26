@@ -119,7 +119,7 @@ rm -f frontend/getopt*.*
 rm -rf %{buildroot}/%{_datadir}/apps
 
 #icon
-install -D -p -m 644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+#install -D -p -m 644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 #.desktop file
 install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
@@ -143,7 +143,7 @@ install -D -p -m 644 frontend/%{name}.1* %{buildroot}%{_mandir}/man1/%{name}.1
 %files qt
 %{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
-%{_datadir}/pixmaps/%{name}.png
+#{_datadir}/pixmaps/%{name}.png
 
 %files -n %{qlibname}
 %{_libdir}/libQZint.so.%{major}{,.*}
