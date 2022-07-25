@@ -5,7 +5,7 @@
 %define qdevname %mklibname -d q%{name}
 
 Name:		zint
-Version:	2.10.0
+Version:	2.11.0
 Release:	1
 Summary:	Barcode generator
 License:	GPLv3+
