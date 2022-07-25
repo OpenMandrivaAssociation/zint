@@ -125,7 +125,7 @@ rm -rf %{buildroot}/%{_datadir}/apps
 install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
 
 # manpage
-install -D -p -m 644 frontend/%{name}.1* %{buildroot}%{_mandir}/man1/%{name}.1
+#install -D -p -m 644 frontend/%{name}.1* %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %doc docs/manual.txt README TODO
