@@ -140,7 +140,7 @@ install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{n
 %{_libdir}/libzint.so
 
 %files qt
-%{_bindir}/%{name}-qt
+#{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
 #{_datadir}/pixmaps/%{name}.png
 
