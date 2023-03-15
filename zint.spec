@@ -133,7 +133,6 @@ install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{n
 %{_mandir}/man1/%{name}.1*
 
 %files -n %{libname}
-%license backend/LICENSE
 %{_libdir}/libzint.so.%{major}{,.*}
 
 %files -n %{devname}
