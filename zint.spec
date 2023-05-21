@@ -145,7 +145,7 @@ install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{n
 #{_datadir}/pixmaps/%{name}.png
 
 %files -n %{qlibname}
-%{_libdir}/libQZint.*
+#{_libdir}/libQZint.*
 
 %files -n %{qdevname}
 %{_includedir}/qzint.h
