@@ -148,5 +148,5 @@ install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{n
 #{_libdir}/libQZint.*
 
 %files -n %{qdevname}
-%{_includedir}/qzint.h
+#{_includedir}/qzint.h
 #{_libdir}/libQZint.so
