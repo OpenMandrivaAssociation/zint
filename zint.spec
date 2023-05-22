@@ -110,7 +110,7 @@ rm -f backend/ms_stdint.h
 rm -f frontend/getopt*.*
 
 %build
-%cmake
+%cmake -DZINT_SHARED=ON
 %make_build VERBOSE=1
 
 %install
@@ -142,13 +142,13 @@ install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{n
 %{_datadir}/zint/  
 
 %files qt
-#{_bindir}/%{name}-qt
+%{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
 #{_datadir}/pixmaps/%{name}.png
 
 %files -n %{qlibname}
-#{_libdir}/libQZint.*
+%{_libdir}/libQZint.*
 
 %files -n %{qdevname}
-#{_includedir}/qzint.h
+%{_includedir}/qzint.h
 #{_libdir}/libQZint.so
