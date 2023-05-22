@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Help)
+BuildRequires:	cmake(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5UiTools)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	desktop-file-utils
@@ -138,6 +139,7 @@ install -D -p -m 644 %{name}-qt.desktop %{buildroot}%{_datadir}/applications/%{n
 %files -n %{devname}
 %{_includedir}/%{name}.h
 %{_libdir}/libzint.so
+%{_datadir}/zint/  
 
 %files qt
 #{_bindir}/%{name}-qt
