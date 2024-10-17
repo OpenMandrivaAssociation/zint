@@ -10,7 +10,7 @@ Release:	1
 Summary:	Barcode generator
 License:	GPLv3+
 Group:		Graphics/Scanning
-URL:		http://www.zint.org.uk/
+URL:		https://www.zint.org.uk/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.gz
 
 # patch to disable creation of rpaths
