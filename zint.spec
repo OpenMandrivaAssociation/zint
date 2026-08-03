@@ -1,11 +1,11 @@
-%define major	2.12
+%define major	2.16
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname -d %{name}
 %define qlibname %mklibname q%{name} %{major}
 %define qdevname %mklibname -d q%{name}
 
 Name:		zint
-Version:	2.12.0
+Version:	2.16.0
 Release:	1
 Summary:	Barcode generator
 License:	GPLv3+
@@ -101,7 +101,7 @@ C library and header files needed to develop applications that use libQZint.
 
 %prep
 %setup -qn %{name}-%{version}-src
-%patch0 -p1
+%patch -P0 -p1
 
 # remove BSD-licensed file required for Windows only (just to ensure that this package is plain GPLv3+)
 rm -f backend/ms_stdint.h
